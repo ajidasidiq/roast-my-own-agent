@@ -12,8 +12,12 @@ ROAST = (
     "\u2014 the only thing it ships on schedule is another loss."
 )
 
+MAX_CHARS = 200
+
 
 def main() -> None:
+    if not ROAST.strip() or len(ROAST) > MAX_CHARS:
+        raise ValueError("roast must be 1-200 non-blank characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as handle:
         handle.write(ROAST)
